@@ -11,9 +11,10 @@ class Player(object):
         self.img = pygame.image.load(img)
         self.rect = self.img.get_rect()
     
-    def draw(self):
+    def next(self):
         """Process tick of event loop."""
         # Get keyboard input
+        print("DRAWING PLAYER")
         keys = pygame.key.get_pressed()
         left, up, right, down = (
             keys[pygame.K_LEFT] or keys[pygame.K_a],
@@ -22,7 +23,7 @@ class Player(object):
             keys[pygame.K_DOWN] or keys[pygame.K_s],
         )
 
-        self.rect = self.rect.move((
+        self.move((
             right - left,
             down - up,
         ))

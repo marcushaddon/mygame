@@ -1,6 +1,7 @@
 """Run game."""
 import pygame
 
+from game import Game
 from player import Player
 
 pygame.init()
@@ -8,22 +9,14 @@ pygame.init()
 size = width, height = 320, 240
 screen = pygame.display.set_mode(size)
 
-white = 255, 255, 255
+game = Game(screen)
 
 player = Player('assets/circle.png')
 
-screen.blit(player.img, (0,0))
+game.spawn(player, (34, 34))
 
 clock = pygame.time.Clock()
 
 while True:
     clock.tick(60)
-
-
-    screen.fill(white)
-    screen.blit(player.img, player.rect)
-    pygame.display.flip()
-
-    player.draw()
-
-    pygame.event.pump()
+    game.draw()
