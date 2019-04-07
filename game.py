@@ -25,8 +25,17 @@ class Game(object):
         self.screen.fill(self.bg_color)
 
         for obj in self.game_objects_list:
+            self._detect_collisions()
             obj.next()
             self.screen.blit(obj.img, obj.rect)
 
         pygame.display.flip()
         pygame.event.pump()
+    
+    def _detect_collisions(self) -> None:
+        """Detect collisions between game objects."""
+        # TODO: Make this not naiive!
+        for i, a in enumerate(self.game_objects_list):
+            for b in self.game_objects_list[i+1:]:
+                if pygame.sprite.collide_rect(a, b):
+                    print(f"COLLISION {a} {b}")

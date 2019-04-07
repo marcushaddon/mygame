@@ -3,18 +3,19 @@ from typing import List
 
 import pygame
 
-class Player(object):
+from game_object import GameObject
+
+class Player(GameObject):
     """Class for implementing the player object."""
 
     def __init__(self, img: str):
         """Initialize player object."""
-        self.img = pygame.image.load(img)
-        self.rect = self.img.get_rect()
+        GameObject.__init__(self, img)
     
-    def next(self):
+    def next(self) -> None:
         """Process tick of event loop."""
+        super().next()
         # Get keyboard input
-        print("DRAWING PLAYER")
         keys = pygame.key.get_pressed()
         left, up, right, down = (
             keys[pygame.K_LEFT] or keys[pygame.K_a],
