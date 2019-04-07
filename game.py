@@ -19,10 +19,10 @@ class Game(object):
     
     def draw(self):
         """Process tick of event loop."""
+        self._detect_collisions()
         self.screen.fill(self.bg_color)
-
+        
         for _, obj in self.game_objects.items():
-            self._detect_collisions()
             obj.next()
             self.screen.blit(obj.img, obj.rect)
 
