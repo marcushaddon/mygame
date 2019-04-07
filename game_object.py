@@ -5,8 +5,12 @@ import pygame
 class GameObject(object):
     """Define behavior for game objects."""
 
+    _id = 0
+
     def __init__(self, img: str):
         """Initialize game object."""
+        self._id = GameObject._id
+        GameObject._id = GameObject._id + 1
         self.img = pygame.image.load(img)
         self.rect = self.img.get_rect()
         self.collisions = []
@@ -17,5 +21,8 @@ class GameObject(object):
     
     def on_collision_enter(self, obj) -> None:
         """Handle collision enter."""
-        print(f"I'm colliding {self}")
+        pass
+    
+    def on_collision_exit(self, other) -> None:
+        """Handle collision exit."""
         pass

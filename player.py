@@ -36,5 +36,10 @@ class Player(GameObject):
     
     def on_collision_enter(self, other: GameObject) -> None:
         """Handle collision enter."""
-        print("DO YOU NOW HOW I HAVE")
-        GameObject.on_collision_enter(self, other)
+        # TODO: Dont move through other objects
+        print(f"IVE BEEN COLLIDEND WITH {other}")
+        pass
+
+    def on_collision_exit(self, other: GameObject) -> None:
+        """Handle collision exit."""
+        print(f"IVE BEN EXITED BY {other}")
