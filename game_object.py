@@ -19,7 +19,7 @@ class GameObject(object):
         """Process tick of event loop."""
         pass
     
-    def on_collision_enter(self, obj) -> None:
+    def on_collision_enter(self, other) -> None:
         """Handle collision enter."""
         pass
     
