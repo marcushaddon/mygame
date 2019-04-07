@@ -1,6 +1,9 @@
 """Code for managing game state."""
+from typing import Tuple
 
 import pygame
+
+from game_object import GameObject
 
 class Game(object):
     """Class for managing game objects."""
@@ -12,16 +15,20 @@ class Game(object):
         self.bg_color = 255, 255, 255
         self.active_collisions = {}
     
-    def spawn(self, obj, xy = (0, 0)) -> int:
+    def spawn(self, obj: GameObject, xy = None) -> int:
         """Spawn a game object."""
         self.game_objects[obj._id] = obj
+        if xy is not None:
+            obj.rect = obj.img.get_rect(
+                center = xy
+            )
         self.screen.blit(obj.img, obj.rect)
     
     def draw(self):
         """Process tick of event loop."""
         self._detect_collisions()
         self.screen.fill(self.bg_color)
-        
+
         for _, obj in self.game_objects.items():
             obj.next()
             self.screen.blit(obj.img, obj.rect)
