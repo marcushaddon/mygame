@@ -33,3 +33,8 @@ class Player(GameObject):
         """Move player."""
         # TODO: Check for collisions
         self.rect = self.rect.move(vector)
+    
+    def on_collision_enter(self, other: GameObject) -> None:
+        """Handle collision enter."""
+        print("DO YOU NOW HOW I HAVE")
+        GameObject.on_collision_enter(self, other)

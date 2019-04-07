@@ -38,4 +38,5 @@ class Game(object):
         for i, a in enumerate(self.game_objects_list):
             for b in self.game_objects_list[i+1:]:
                 if pygame.sprite.collide_rect(a, b):
-                    print(f"COLLISION {a} {b}")
+                    a.on_collision_enter(b)
+                    b.on_collision_enter(a)
