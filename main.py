@@ -13,10 +13,10 @@ screen = pygame.display.set_mode(size)
 game = Game(screen)
 
 player = Player('assets/circle.png')
-ball = GameObject('assets/ball.jpeg')
+ball = GameObject('assets/circle.png')
 
-game.spawn(ball)
-game.spawn(player, (100, 134))
+game.spawn(ball, (50, 50))
+game.spawn(player, (width / 2, height / 2))
 
 
 clock = pygame.time.Clock()
